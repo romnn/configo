@@ -1,16 +1,41 @@
 ## configo
 
 [![Build Status](https://travis-ci.com/romnnn/configo.svg?branch=master)](https://travis-ci.com/romnnn/configo)
-[![GitHub](https://img.shields.io/github/license/romnnn/configo)](https://github.com/romnnn/configo)[![GoDoc](https://godoc.org/github.com/romnnn/configo?status.svg)](https://godoc.org/github.com/romnnn/configo)  [![Test Coverage](https://codecov.io/gh/romnnn/configo/branch/master/graph/badge.svg)](https://codecov.io/gh/romnnn/configo)
+[![GitHub](https://img.shields.io/github/license/romnnn/configo)](https://github.com/romnnn/configo)
+[![GoDoc](https://godoc.org/github.com/romnnn/configo?status.svg)](https://godoc.org/github.com/romnnn/configo)
+[![Test Coverage](https://codecov.io/gh/romnnn/configo/branch/master/graph/badge.svg)](https://codecov.io/gh/romnnn/configo)
+[![Release](https://img.shields.io/github/release/romnnn/configo)](https://github.com/romnnn/configo/releases/latest)
 
-Your description goes here...
+Dead simple handling of config structs containing optional values for your golang app!
 
 
-
-#### Usage as a library
+#### Usage
 
 ```golang
-import "github.com/romnnn/configo"
+import (
+	"fmt"
+	opt "github.com/romnnn/configo"
+)
+
+type myAppConfig struct {
+	EnableExperimental *opt.Flag
+}
+
+var defaultConfig myAppConfig = myAppConfig{
+	EnableExperimental: opt.Set(false),
+}
+
+func main() {
+	userConfig := myAppConfig{
+		EnableExperimental: opt.Set(true),
+	}
+	// Merge user config with the default config
+	// Will only set values that have NOT been set
+	// Otherwise, use OverrideConfig
+	opt.MergeConfig(&userConfig, defaultConfig)
+	didEnableExperimental := opt.Enabled(userConfig.EnableExperimental)
+	fmt.Printf("EnableExperimental=%t\n", didEnableExperimental) // true
+}
 ```
 
 For more examples, see `examples/`.
