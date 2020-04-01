@@ -10,34 +10,12 @@ type myComplexConfig struct {
 	Sanitize           *Flag
 	ShowErrors         *Flag
 	EnableExperimental *Flag
-}
-
-func TestSet(t *testing.T) {
-	if (*Set(false)).value {
-		t.Errorf("Setting false did yield true")
-	}
-	if !(*Set(true)).value {
-		t.Errorf("Setting true did yield false")
-	}
-}
-
-func TestEnabled(t *testing.T) {
-	trueVal := Set(true)
-	falseVal := Set(false)
-	if Enabled(falseVal) {
-		t.Errorf("Checking ptr to false did yield true")
-	}
-	if !Enabled(trueVal) {
-		t.Errorf("Checking ptr to true did yield false")
-	}
-	if Enabled(nil) {
-		t.Errorf("Checking nil ptr did yield true")
-	}
+	BatchSize          *Int // Example where 0 value makes no sense
 }
 
 func TestConfigOverride(t *testing.T) {
-	o := myConfig{BoolFlag: Set(true)}
-	oo := myConfig{BoolFlag: Set(false)}
+	o := myConfig{BoolFlag: SetFlag(true)}
+	oo := myConfig{BoolFlag: SetFlag(false)}
 	OverrideConfig(&o, oo)
 	if Enabled(o.BoolFlag) {
 		t.Errorf("BoolFlag was not successfully overridden")
@@ -45,8 +23,8 @@ func TestConfigOverride(t *testing.T) {
 }
 
 func TestConfigMerge(t *testing.T) {
-	o := myConfig{BoolFlag: Set(true)}
-	oo := myConfig{BoolFlag: Set(false)}
+	o := myConfig{BoolFlag: SetFlag(true)}
+	oo := myConfig{BoolFlag: SetFlag(false)}
 	MergeConfig(&o, oo)
 	if !Enabled(o.BoolFlag) {
 		t.Errorf("BoolFlag was not successfully merged")
@@ -55,12 +33,14 @@ func TestConfigMerge(t *testing.T) {
 
 func TestComplexConfigMerge(t *testing.T) {
 	defaultConfig := myComplexConfig{
-		EnableExperimental: Set(false),
-		Sanitize:           Set(true),
+		EnableExperimental: SetFlag(false),
+		Sanitize:           SetFlag(true),
+		BatchSize:          SetInt(64),
 	}
 	userConfig := myComplexConfig{
-		EnableExperimental: Set(true),
-		ShowErrors:         Set(true),
+		EnableExperimental: SetFlag(true),
+		ShowErrors:         SetFlag(true),
+		BatchSize:          SetInt(32),
 	}
 	MergeConfig(&userConfig, defaultConfig)
 	if !Enabled(userConfig.Sanitize) {
@@ -70,6 +50,9 @@ func TestComplexConfigMerge(t *testing.T) {
 		t.Errorf("ShowErrors was not merged to true")
 	}
 	if !Enabled(userConfig.EnableExperimental) {
+		t.Errorf("EnableExperimental was not merged to true")
+	}
+	if GetIntOrDefault(userConfig.BatchSize, 0) != 32 {
 		t.Errorf("EnableExperimental was not merged to true")
 	}
 }

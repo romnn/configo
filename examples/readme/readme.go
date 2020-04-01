@@ -11,12 +11,12 @@ type myAppConfig struct {
 }
 
 var defaultConfig myAppConfig = myAppConfig{
-	EnableExperimental: opt.Set(false),
+	EnableExperimental: opt.SetFlag(false),
 }
 
 func main() {
 	userConfig := myAppConfig{
-		EnableExperimental: opt.Set(true),
+		EnableExperimental: opt.SetFlag(true),
 	}
 	// Merge user config with the default config
 	// Will only set values that have NOT been set

@@ -18,8 +18,8 @@ type appConfig struct {
 
 func (c appConfig) defaultConfig() appConfig {
 	return appConfig{
-		EnableExperimental: opt.Set(false),
-		Sanitize:           opt.Set(true),
+		EnableExperimental: opt.SetFlag(false),
+		Sanitize:           opt.SetFlag(true),
 	}
 }
 
@@ -36,8 +36,8 @@ func (app *myApp) Start() {
 func main() {
 	app := &myApp{
 		Config: appConfig{
-			EnableExperimental: opt.Set(true),
-			ShowErrors:         opt.Set(true),
+			EnableExperimental: opt.SetFlag(true),
+			ShowErrors:         opt.SetFlag(true),
 		},
 	}
 	app.Start()
