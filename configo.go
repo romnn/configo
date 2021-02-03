@@ -3,7 +3,7 @@ package configo
 import "github.com/imdario/mergo"
 
 // Version is incremented using bump2version
-const Version = "0.1.1"
+const Version = "0.1.2"
 
 // Config ...
 type Config interface{}
