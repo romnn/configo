@@ -1,6 +1,6 @@
 ## configo
 
-[![Build Status](https://travis-ci.com/romnn/configo.svg?branch=master)](https://travis-ci.com/romnn/configo)
+[![Build Status](https://github.com/romnn/configo/workflows/test/badge.svg)](https://github.com/romnn/configo/actions)
 [![GitHub](https://img.shields.io/github/license/romnn/configo)](https://github.com/romnn/configo)
 [![GoDoc](https://godoc.org/github.com/romnn/configo?status.svg)](https://godoc.org/github.com/romnn/configo)
 [![Test Coverage](https://codecov.io/gh/romnn/configo/branch/master/graph/badge.svg)](https://codecov.io/gh/romnn/configo)
