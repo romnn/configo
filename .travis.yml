@@ -7,7 +7,7 @@ go:
 os:
   - linux
   - osx
-env: MOD=github.com/romnnn/configo BINARY=configo
+env: MOD=github.com/romnn/configo BINARY=configo
 
 jobs:
   allow_failures:

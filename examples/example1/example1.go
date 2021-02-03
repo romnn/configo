@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	opt "github.com/romnnn/configo"
+	opt "github.com/romnn/configo"
 )
 
 type myApp struct {

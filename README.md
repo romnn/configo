@@ -1,10 +1,10 @@
 ## configo
 
-[![Build Status](https://travis-ci.com/romnnn/configo.svg?branch=master)](https://travis-ci.com/romnnn/configo)
-[![GitHub](https://img.shields.io/github/license/romnnn/configo)](https://github.com/romnnn/configo)
-[![GoDoc](https://godoc.org/github.com/romnnn/configo?status.svg)](https://godoc.org/github.com/romnnn/configo)
-[![Test Coverage](https://codecov.io/gh/romnnn/configo/branch/master/graph/badge.svg)](https://codecov.io/gh/romnnn/configo)
-[![Release](https://img.shields.io/github/release/romnnn/configo)](https://github.com/romnnn/configo/releases/latest)
+[![Build Status](https://travis-ci.com/romnn/configo.svg?branch=master)](https://travis-ci.com/romnn/configo)
+[![GitHub](https://img.shields.io/github/license/romnn/configo)](https://github.com/romnn/configo)
+[![GoDoc](https://godoc.org/github.com/romnn/configo?status.svg)](https://godoc.org/github.com/romnn/configo)
+[![Test Coverage](https://codecov.io/gh/romnn/configo/branch/master/graph/badge.svg)](https://codecov.io/gh/romnn/configo)
+[![Release](https://img.shields.io/github/release/romnn/configo)](https://github.com/romnn/configo/releases/latest)
 
 Dead simple handling of config structs containing optional values for your golang app!
 
@@ -14,7 +14,7 @@ Dead simple handling of config structs containing optional values for your golan
 ```golang
 import (
 	"fmt"
-	opt "github.com/romnnn/configo"
+	opt "github.com/romnn/configo"
 )
 
 type myAppConfig struct {

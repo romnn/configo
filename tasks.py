@@ -13,7 +13,7 @@ import webbrowser
 
 yaml = YAML()
 
-PKG = "github.com/romnnn/configo"
+PKG = "github.com/romnn/configo"
 CMD_PKG = PKG
 
 

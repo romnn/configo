@@ -1,4 +1,4 @@
-module github.com/romnnn/configo
+module github.com/romnn/configo
 
 go 1.13
 
